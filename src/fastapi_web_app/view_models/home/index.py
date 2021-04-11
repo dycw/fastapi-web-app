@@ -1,9 +1,9 @@
 from starlette.requests import Request
 
-from fastapi_web_app.services.package_service import latest_packages
-from fastapi_web_app.services.package_service import package_count
-from fastapi_web_app.services.package_service import release_count
-from fastapi_web_app.services.user_service import user_count
+from fastapi_web_app.services.packages import latest_packages
+from fastapi_web_app.services.packages import package_count
+from fastapi_web_app.services.packages import release_count
+from fastapi_web_app.services.users import user_count
 from fastapi_web_app.view_models.base import ViewModelBase
 
 
