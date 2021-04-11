@@ -8,11 +8,29 @@ from fastapi_web_app.views import packages
 
 
 app = FastAPI()
-app.include_router(account.router)
-app.include_router(home.router)
-app.include_router(packages.router)
-global_init("src/templates")
+
+
+def main() -> None:
+    configure()
+    run(app)
+
+
+def configure() -> None:
+    configure_routes()
+    configure_templates()
+
+
+def configure_routes() -> None:
+    app.include_router(account.router)
+    app.include_router(home.router)
+    app.include_router(packages.router)
+
+
+def configure_templates() -> None:
+    global_init("src/templates")
 
 
 if __name__ == "__main__":
-    run(app)
+    main()
+else:
+    configure()
