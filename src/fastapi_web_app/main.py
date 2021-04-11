@@ -22,11 +22,7 @@ def configure() -> None:
 
 
 def configure_routes() -> None:
-    app.mount(
-        "/static",
-        StaticFiles(directory="static"),
-        name="static",
-    )
+    app.mount("/static", StaticFiles(directory="static"), name="static")
     app.include_router(account.router)
     app.include_router(home.router)
     app.include_router(packages.router)
