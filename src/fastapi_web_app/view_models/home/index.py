@@ -4,7 +4,7 @@ from fastapi_web_app.services.package_service import latest_packages
 from fastapi_web_app.services.package_service import package_count
 from fastapi_web_app.services.package_service import release_count
 from fastapi_web_app.services.user_service import user_count
-from fastapi_web_app.viewmodels.shared.viewmodel import ViewModelBase
+from fastapi_web_app.view_models.base import ViewModelBase
 
 
 class IndexViewModel(ViewModelBase):
