@@ -6,7 +6,7 @@ router = APIRouter()
 
 
 @router.get("/")
-@template(template_file="index.html")
+@template(template_file="home/index.html")
 def index() -> dict[str, str]:
     return {"user_name": "derek"}
 
