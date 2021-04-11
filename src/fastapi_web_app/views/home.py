@@ -2,6 +2,9 @@ from typing import Any
 
 from fastapi import APIRouter
 from fastapi_chameleon import template
+from starlette.requests import Request
+
+from fastapi_web_app.viewmodels.home.indexviewmodel import IndexViewModel
 
 
 router = APIRouter()
@@ -9,14 +12,9 @@ router = APIRouter()
 
 @router.get("/")
 @template()
-def index() -> dict[str, Any]:
-    return {
-        "user_name": "derek",
-        "package_count": 274000,
-        "release_count": 2234847,
-        "user_count": 73874,
-        "packages": [{"id": "fastapi", "summary": "What you want to master"}],
-    }
+def index(request: Request) -> dict[str, Any]:
+    vm = IndexViewModel(request)
+    return vm.to_dict()
 
 
 @router.get("/about")
