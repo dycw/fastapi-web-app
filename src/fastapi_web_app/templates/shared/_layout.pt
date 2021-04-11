@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8"/>
     <title>PyPI</title>
+    <style>
+        body {
+            background: #cfffcf;
+        }
+    </style>
 </head>
 
 <body>
 <h1>PyPI site</h1>
+<div>
+    <a href="/">home</a>
+    <a href="/about">about</a>
+</div>
 
 <div class="main-content">
     <div metal:define-slot="content" tal:omit-tag="True">No content</div>

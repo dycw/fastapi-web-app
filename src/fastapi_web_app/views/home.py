@@ -12,5 +12,6 @@ def index() -> dict[str, str]:
 
 
 @router.get("/about")
+@template()
 def about() -> dict[str, str]:
     return {}
