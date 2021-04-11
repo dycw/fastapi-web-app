@@ -45,6 +45,14 @@ optional = false
 python-versions = ">=3.6.1"
 
 [[package]]
+name = "chameleon"
+version = "3.9.0"
+description = "Fast HTML/XML Template Compiler."
+category = "main"
+optional = false
+python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*"
+
+[[package]]
 name = "click"
 version = "7.1.2"
 description = "Composable command line interface toolkit"
@@ -367,7 +375,7 @@ dev = ["pytest (>=4.6.2)", "black (>=19.3b0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "963d1a69ad105ebd40901c05168f88f4f035ce60f7f0f6d68642e86aa6fd9580"
+content-hash = "264cd5486a1797c0f1f0846bcfd1b5c124683d92d1cf1ff9f6a8eeb3d1c74b0f"
 
 [metadata.files]
 apipkg = [
@@ -389,6 +397,10 @@ attrs = [
 cfgv = [
     {file = "cfgv-3.2.0-py2.py3-none-any.whl", hash = "sha256:32e43d604bbe7896fe7c248a9c2276447dbef840feb28fe20494f62af110211d"},
     {file = "cfgv-3.2.0.tar.gz", hash = "sha256:cf22deb93d4bcf92f345a5c3cd39d3d41d6340adc60c78bbbd6588c384fda6a1"},
+]
+chameleon = [
+    {file = "Chameleon-3.9.0-py2.py3-none-any.whl", hash = "sha256:de6d4db8d5e95ce490e4dd667857fde167c610f388dec31252ce8bb82b39e778"},
+    {file = "Chameleon-3.9.0.tar.gz", hash = "sha256:d8c42073a3e5fb564e9ad2fa0ccc7f527b68efb65b350bb1df3dd19b3003cab7"},
 ]
 click = [
     {file = "click-7.1.2-py2.py3-none-any.whl", hash = "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"},
