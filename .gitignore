@@ -1,2 +1,5 @@
 # editor
 .vim/
+
+# Python
+*.py[cod]
