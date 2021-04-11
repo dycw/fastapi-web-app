@@ -22,24 +22,16 @@ virtual_env = ".venv/bin/python"
 
 
 [tool.poetry]
-name = "flask-learning"
+name = "fastapi-web-app"
 version = "0.0.0"
-description = "Messing around in Flask"
+description = "TalkPython's Full Web Apps with FastAPI course"
 authors = ["Derek Wan <d.wan@icloud.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-email-validator = "^1.1"
-flask = "^1.1"
-flask-login = "^0.5"
-flask-mail = "^0.9"
-flask-migrate = "^2.7"
-flask-sqlalchemy = "^2.5"
-flask-wtf = "^0.14"
 loguru = "^0.5"
-ssl-smtp-handler = "^1.0"
-pyjwt = "^2.0"
+fastapi = "^0.63.0"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^2.12"
