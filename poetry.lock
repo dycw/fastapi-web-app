@@ -305,6 +305,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "unicorn"
+version = "1.0.2"
+description = "Unicorn CPU emulator engine"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "virtualenv"
 version = "20.4.3"
 description = "Virtual Python Environment builder"
@@ -336,7 +344,7 @@ dev = ["pytest (>=4.6.2)", "black (>=19.3b0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "994aa5d8a01285496946907f66f99f7c3d29499636237727690e44948b824bb0"
+content-hash = "c598ba2869d57e5a3090d04baf459261514c1376cd4effb8efede97150c3c806"
 
 [metadata.files]
 apipkg = [
@@ -490,6 +498,14 @@ typing-extensions = [
     {file = "typing_extensions-3.7.4.3-py2-none-any.whl", hash = "sha256:dafc7639cde7f1b6e1acc0f457842a83e722ccca8eef5270af2d74792619a89f"},
     {file = "typing_extensions-3.7.4.3-py3-none-any.whl", hash = "sha256:7cb407020f00f7bfc3cb3e7881628838e69d8f3fcab2f64742a5e76b2f841918"},
     {file = "typing_extensions-3.7.4.3.tar.gz", hash = "sha256:99d4073b617d30288f569d3f13d2bd7548c3a7e4c8de87db09a9d29bb3a4a60c"},
+]
+unicorn = [
+    {file = "unicorn-1.0.2-py2.py3-none-macosx_10_14_x86_64.whl", hash = "sha256:25d65de6662c74cfed371b0bbf4fc8cc9246ab7e293314a29a6c570da46b6050"},
+    {file = "unicorn-1.0.2-py2.py3-none-manylinux1_i686.whl", hash = "sha256:f8ac03d7fa5d5b71871064db89e3c69f4acc773d617fda21cf43c00b95e06229"},
+    {file = "unicorn-1.0.2-py2.py3-none-manylinux1_x86_64.whl", hash = "sha256:a87d6065cb44854d40d25259d0c0f3bfc849c3cf0f6b48056f861b2b20bbaee0"},
+    {file = "unicorn-1.0.2-py2.py3-none-win32.whl", hash = "sha256:62df2e022563b42ab12f43f003449b11e7d110ff9268ed20917aaf0a90fdfe4e"},
+    {file = "unicorn-1.0.2-py2.py3-none-win_amd64.whl", hash = "sha256:16f43e836b088f2b5b537e7ac6ae0f364946b0b7d608f637a5ab919e32f3b919"},
+    {file = "unicorn-1.0.2.tar.gz", hash = "sha256:fd2d5225d394c54af889b550b86b33ae8311945d2225744509434cd86663a94a"},
 ]
 virtualenv = [
     {file = "virtualenv-20.4.3-py2.py3-none-any.whl", hash = "sha256:83f95875d382c7abafe06bd2a4cdd1b363e1bb77e02f155ebe8ac082a916b37c"},
