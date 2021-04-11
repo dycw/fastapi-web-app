@@ -10,4 +10,5 @@ def index() -> dict[str, str]:
     return {"message": "Hello world"}
 
 
-run(app)
+if __name__ == "__main__":
+    run(app)
