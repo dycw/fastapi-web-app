@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>PyPI</title>
-    <style>
-        body {
-            background: #cfffcf;
-        }
-    </style>
+    <link rel="stylesheet" href="/src/fastapi_web_app/static/site.css">
 </head>
 
 <body>

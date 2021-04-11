@@ -1,5 +1,6 @@
 {
   "include": ["src"],
+  "exclude": [".venv", "official-repo"],
   "venvPath": ".venv",
   "executionEnvironments": [{ "root": "src" }]
 }
