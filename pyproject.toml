@@ -30,9 +30,11 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.9"
+chameleon = "^3.9"
 fastapi = "^0.63"
 loguru = "^0.5"
 uvicorn = "^0.13"
+fastapi-chameleon = { git = "https://github.com/mikeckennedy/fastapi-chameleon.git", branch = "main" }
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^2.12"

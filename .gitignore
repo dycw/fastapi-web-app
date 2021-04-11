@@ -1,2 +1,6 @@
 # editor
 .vim/
+
+# Python
+*.py[cod]
+__pycache__/
