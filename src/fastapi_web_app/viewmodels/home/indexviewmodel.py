@@ -1,21 +1,16 @@
-from typing import TypedDict
-
 from starlette.requests import Request
 
+from fastapi_web_app.services.package_service import latest_packages
+from fastapi_web_app.services.package_service import package_count
+from fastapi_web_app.services.package_service import release_count
+from fastapi_web_app.services.user_service import user_count
 from fastapi_web_app.viewmodels.shared.viewmodel import ViewModelBase
 
 
 class IndexViewModel(ViewModelBase):
     def __init__(self, request: Request) -> None:
         super().__init__(request)
-        self.package_count: int = 274000
-        self.release_count: int = 2234847
-        self.user_count: int = 73874
-
-        class Package(TypedDict):
-            id: str
-            summary: str
-
-        self.packages: list[Package] = [
-            {"id": "fastapi", "summary": "What you want to master"}
-        ]
+        self.package_count: int = package_count()
+        self.release_count: int = release_count()
+        self.user_count: int = user_count()
+        self.packages: list[dict[str, str]] = latest_packages(limit=5)
