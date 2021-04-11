@@ -1,18 +1,17 @@
 from fastapi import FastAPI
-from starlette.responses import HTMLResponse
+from fastapi_chameleon import global_init
+from fastapi_chameleon import template
 from uvicorn import run
 
 
 app = FastAPI()
+global_init("templates")
 
 
 @app.get("/")
-def index() -> HTMLResponse:
-    content = """
-    <h1>Hello FastAPI web app</h1>
-    <div>This is where our fake PyPI app will live</div>
-    """
-    return HTMLResponse(content=content)
+@template(template_file="index.html")
+def index() -> dict[str, str]:
+    return {"user_name": "derek"}
 
 
 if __name__ == "__main__":
