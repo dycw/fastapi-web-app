@@ -27,7 +27,7 @@ def configure_routes() -> None:
 
 
 def configure_templates() -> None:
-    global_init("src/templates")
+    global_init("src/fastapi_web_app/templates")
 
 
 if __name__ == "__main__":
