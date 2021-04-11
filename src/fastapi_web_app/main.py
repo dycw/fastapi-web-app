@@ -23,8 +23,8 @@ def configure() -> None:
 
 def configure_routes() -> None:
     app.mount(
-        "/src/fastapi_web_app/static",
-        StaticFiles(directory="src/fastapi_web_app/static"),
+        "/static",
+        StaticFiles(directory="static"),
         name="static",
     )
     app.include_router(account.router)
@@ -33,7 +33,7 @@ def configure_routes() -> None:
 
 
 def configure_templates() -> None:
-    global_init("src/fastapi_web_app/templates")
+    global_init("templates")
 
 
 if __name__ == "__main__":
