@@ -1,3 +1,4 @@
+from asyncio import sleep
 from typing import Union
 
 from fastapi import APIRouter
@@ -66,6 +67,7 @@ async def login(  # noqa: F811
     else:
         user = await login_user(vm.email, vm.password)
         if user is None:
+            await sleep(1.0)  # throttle
             vm.error = "The account does not exist or the password is wrong"
             return vm.to_dict()
         else:
