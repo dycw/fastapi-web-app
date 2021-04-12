@@ -12,6 +12,8 @@ class DetailsViewModel(ViewModelBase):
         self.latest_version = "0.0.0"
         self.is_latest = True
         self.maintainers = []
+        self.package = None
+        self.latest_release = None
 
     async def load(self) -> None:
         self.package = await get_package_by_id(self.package_name)
