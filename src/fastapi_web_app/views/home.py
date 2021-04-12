@@ -13,8 +13,10 @@ router = APIRouter()
 
 @router.get("/")
 @template()
-def index(request: Request) -> dict[str, Any]:
-    return IndexViewModel(request).to_dict()
+async def index(request: Request) -> dict[str, Any]:
+    model = IndexViewModel(request)
+    await model.load()
+    return model.to_dict()
 
 
 @router.get("/about")
