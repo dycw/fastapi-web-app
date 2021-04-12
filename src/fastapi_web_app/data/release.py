@@ -1,4 +1,5 @@
 import datetime as dt
+from typing import Union
 
 from sqlalchemy import BigInteger
 from sqlalchemy import Column
@@ -18,7 +19,7 @@ class Release(SqlAlchemyBase):
     major_ver: int = Column(BigInteger, index=True)
     minor_ver: int = Column(BigInteger, index=True)
     build_ver: int = Column(BigInteger, index=True)
-    created_date: dt.datetime = Column(
+    created_date: Union[Column, dt.datetime] = Column(
         DateTime, default=dt.datetime.now, index=True
     )
     comment: str = Column(String)

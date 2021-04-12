@@ -2,14 +2,15 @@ from typing import Optional
 
 from starlette.requests import Request
 
-from fastapi_web_app.data.user import User
+from fastapi_web_app.services.users import get_user_by_email
+from fastapi_web_app.services.users import get_user_by_id
 from fastapi_web_app.view_models.base import ViewModelBase
 
 
 class AccountViewModel(ViewModelBase):
     def __init__(self, request: Request) -> None:
         super().__init__(request)
-        self.user = User("Derek", "d.wan@icloud.com", "hpassword")
+        self.user = get_user_by_id(self.user_id)  # type: ignore
 
 
 class RegisterViewModel(ViewModelBase):
@@ -33,6 +34,8 @@ class RegisterViewModel(ViewModelBase):
             self.error = (
                 "Your password is required and must be at least 5 chars"
             )
+        elif get_user_by_email(self.email) is not None:
+            self.error = "User already exists"
 
 
 class LoginViewModel(ViewModelBase):
