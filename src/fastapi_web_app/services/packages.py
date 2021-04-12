@@ -1,3 +1,4 @@
+import datetime
 import datetime as dt
 from typing import Optional
 from typing import cast
@@ -42,16 +43,14 @@ def latest_packages(*, limit: int = 5) -> list[Package]:
 
 
 def get_package_by_id(package_name: str) -> Optional[Package]:
-    return Package(
-        package_name,
-        "This is the summary",
-        "Full details here",
-        "https://fastapi.tiangolo.com/",
-        "MIT",
-        "Sebastian Ramirez",
-        maintainers=[],
-    )
+    session = create_session()
+    try:
+        return session.query(Package).filter(Package.id == package_name).first()
+    finally:
+        session.close()
 
 
 def get_latest_release_for_package(package_name: str) -> Release:  # noqa: U100
-    return Release("1.2.0", dt.datetime.now())
+    return Release(
+        major_ver=1, minor_ver=2, build_ver=0, created_date=dt.datetime.now()
+    )
