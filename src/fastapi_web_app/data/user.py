@@ -11,10 +11,14 @@ from fastapi_web_app.data.modelbase import SqlAlchemyBase
 class User(SqlAlchemyBase):
     __tablename__ = "users"
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String)
-    email = Column(String, index=True, unique=True)
-    hash_password = Column(String)
-    created_date = Column(DateTime, default=dt.datetime.now, index=True)
-    last_login = Column(DateTime, default=dt.datetime.now, index=True)
-    profile_image_url = Column(String)
+    id: int = Column(Integer, primary_key=True, autoincrement=True)
+    name: str = Column(String)
+    email: str = Column(String, index=True, unique=True)
+    hash_password: str = Column(String)
+    created_date: dt.datetime = Column(
+        DateTime, default=dt.datetime.now, index=True
+    )
+    last_login: dt.datetime = Column(
+        DateTime, default=dt.datetime.now, index=True
+    )
+    profile_image_url: str = Column(String)
