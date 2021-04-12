@@ -9,6 +9,7 @@ class ViewModelBase:
         self.request = request
         self.error: Optional[str] = None
         self.user_id: Optional[str] = None
+        self.is_logged_in = False
 
     def to_dict(self) -> dict[str, Any]:
         return self.__dict__
