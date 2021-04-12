@@ -13,12 +13,13 @@ from fastapi_web_app.data.modelbase import SqlAlchemyBase
 __factory: Optional[Callable[[], Session]] = None
 
 
-def global_init(db_file: str) -> None:
+def global_init(db_file: Path) -> None:
     global __factory
 
     if __factory:
         return
 
+    db_file = str(db_file)
     if not db_file or not db_file.strip():
         raise Exception("You must specify a db file.")
 
@@ -36,7 +37,7 @@ def global_init(db_file: str) -> None:
     )
     __factory = orm.sessionmaker(bind=engine)
 
-    from fastapi_web_app.data.__all_models import *  # noqa
+    from fastapi_web_app.data import __all_models  # noqa
 
     SqlAlchemyBase.metadata.create_all(engine)
 
