@@ -34,7 +34,7 @@ async def latest_packages(*, limit: int = 5) -> list[Package]:
 
 
 async def get_package_by_id(package_name: str) -> Optional[Package]:
-    sel = select(Package).filter(Package.id == package_name)
+    sel = select(Package).filter(Package.id == package_name).limit(1)
     async with create_async_session() as session:
         return (await session.execute(sel)).scalar_one_or_none()
 
@@ -46,6 +46,7 @@ async def get_latest_release_for_package(
         select(Release)
         .filter(Release.package_id == package_name)
         .order_by(Release.created_date.desc())
+        .limit(1)
     )
     async with create_async_session() as session:
         return (await session.execute(sel)).scalar_one_or_none()
