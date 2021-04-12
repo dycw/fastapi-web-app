@@ -42,7 +42,7 @@ async def register(  # noqa: F811
     if vm.error or vm.name is None or vm.email is None or vm.password is None:
         return vm.to_dict()
     else:
-        user = create_account(vm.name, vm.email, vm.password)
+        user = await create_account(vm.name, vm.email, vm.password)
         response = RedirectResponse("/account", status_code=HTTP_302_FOUND)
         set_auth(response, user.id)
         return response
@@ -64,7 +64,7 @@ async def login(  # noqa: F811
     if vm.error or vm.email is None or vm.password is None:
         return vm.to_dict()
     else:
-        user = login_user(vm.email, vm.password)
+        user = await login_user(vm.email, vm.password)
         if user is None:
             vm.error = "The account does not exist or the password is wrong"
             return vm.to_dict()
