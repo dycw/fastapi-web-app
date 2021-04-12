@@ -1,10 +1,15 @@
 from typing import Optional
 
+from fastapi_web_app.data.db_session import create_session
 from fastapi_web_app.data.user import User
 
 
 def user_count() -> int:
-    return 73874
+    session = create_session()
+    try:
+        return session.query(User).count()
+    finally:
+        session.close()
 
 
 def create_account(name: str, email: str, password: str) -> User:

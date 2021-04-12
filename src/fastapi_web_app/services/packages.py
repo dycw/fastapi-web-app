@@ -1,16 +1,25 @@
 import datetime as dt
 from typing import Optional
 
+from fastapi_web_app.data.db_session import create_session
 from fastapi_web_app.data.package import Package
 from fastapi_web_app.data.release import Release
 
 
 def package_count() -> int:
-    return 274000
+    session = create_session()
+    try:
+        return session.query(Package).count()
+    finally:
+        session.close()
 
 
 def release_count() -> int:
-    return 2234847
+    session = create_session()
+    try:
+        return session.query(Release).count()
+    finally:
+        session.close()
 
 
 def latest_packages(*, limit: int = 5) -> list[dict[str, str]]:
