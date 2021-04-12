@@ -12,13 +12,13 @@ app = FastAPI()
 
 
 def main() -> None:
-    configure()
-    run(app, host="127.0.0.1", port=8000)
+    configure(dev_mode=True)
+    run(app, host="127.0.0.1", port=8000, debug=True)
 
 
-def configure() -> None:
+def configure(*, dev_mode: bool) -> None:
     configure_routes()
-    configure_templates()
+    configure_templates(dev_mode=dev_mode)
 
 
 def configure_routes() -> None:
@@ -28,11 +28,11 @@ def configure_routes() -> None:
     app.include_router(packages.router)
 
 
-def configure_templates() -> None:
-    global_init("templates")
+def configure_templates(*, dev_mode: bool) -> None:
+    global_init("templates", auto_reload=dev_mode)
 
 
 if __name__ == "__main__":
     main()
 else:
-    configure()
+    configure(dev_mode=False)

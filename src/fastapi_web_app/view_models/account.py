@@ -36,4 +36,17 @@ class RegisterViewModel(ViewModelBase):
 
 
 class LoginViewModel(ViewModelBase):
-    pass
+    def __init__(self, request: Request) -> None:
+        super().__init__(request)
+        self.email: Optional[str] = None
+        self.password: Optional[str] = None
+
+    async def load(self) -> None:
+        form = await self.request.form()
+        self.email = form.get("email")
+        self.password = form.get("email")
+
+        if not self.email or not self.email.strip():
+            self.error = "Your email is required."
+        elif not self.password:
+            self.error = "Your password is required"
