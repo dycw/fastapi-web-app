@@ -46,17 +46,13 @@ def login_user(email: str, password: str) -> Optional[User]:
         session.close()
 
 
-def get_user_by_id(user_id: int) -> Optional[User]:
-    session = create_session()
-    try:
-        return session.query(User).filter(User.id == user_id).first()
-    finally:
-        session.close()
+async def get_user_by_id(user_id: int) -> Optional[User]:
+    sel = select(User).filter(User.id == user_id)
+    async with create_async_session() as session:
+        return session.execute(sel).scalar_one_or_none()
 
 
-def get_user_by_email(email: str) -> Optional[User]:
-    session = create_session()
-    try:
-        return session.query(User).filter(User.email == email).first()
-    finally:
-        session.close()
+async def get_user_by_email(email: str) -> Optional[User]:
+    sel = select(User).filter(User.email == email)
+    async with create_async_session() as session:
+        return session.execute(sel).scalar_one_or_none()

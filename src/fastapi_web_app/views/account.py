@@ -20,8 +20,10 @@ router = APIRouter()
 
 @router.get("/account")
 @template()
-def index(request: Request) -> dict[str, str]:
-    return AccountViewModel(request).to_dict()
+async def index(request: Request) -> dict[str, str]:
+    model = AccountViewModel(request)
+    await model.load()
+    return model.to_dict()
 
 
 @router.get("/account/register")
