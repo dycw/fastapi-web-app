@@ -13,6 +13,7 @@ from fastapi_web_app.data.modelbase import SqlAlchemyBase
 
 class Release(SqlAlchemyBase):
     __tablename__ = "releases"
+
     id: int = Column(Integer, primary_key=True, autoincrement=True)
     major_ver: int = Column(BigInteger, index=True)
     minor_ver: int = Column(BigInteger, index=True)

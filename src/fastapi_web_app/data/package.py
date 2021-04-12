@@ -1,4 +1,5 @@
 import datetime as dt
+from typing import Union
 from typing import cast
 
 from sqlalchemy import Column
@@ -12,7 +13,8 @@ from fastapi_web_app.data.release import Release
 
 class Package(SqlAlchemyBase):
     __tablename__ = "packages"
-    id: str = Column(String, primary_key=True)
+
+    id: Union[Column, str] = Column(String, primary_key=True)
     created_date: dt.datetime = Column(
         DateTime, default=dt.datetime.now, index=True
     )

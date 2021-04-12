@@ -16,5 +16,6 @@ class DetailsViewModel(ViewModelBase):
         self.maintainers = []
         if not self.package or not self.latest_version:
             return
-        self.latest_version = self.latest_release.version
-        self.maintainers = self.package.maintainers
+        r = self.latest_release
+        self.latest_version = f"{r.major_ver}.{r.minor_ver}.{r.build_ver}"
+        self.maintainers = []
