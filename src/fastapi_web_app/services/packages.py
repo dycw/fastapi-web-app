@@ -1,5 +1,3 @@
-import datetime
-import datetime as dt
 from typing import Optional
 from typing import cast
 
@@ -50,7 +48,14 @@ def get_package_by_id(package_name: str) -> Optional[Package]:
         session.close()
 
 
-def get_latest_release_for_package(package_name: str) -> Release:  # noqa: U100
-    return Release(
-        major_ver=1, minor_ver=2, build_ver=0, created_date=dt.datetime.now()
-    )
+def get_latest_release_for_package(package_name: str) -> Release:
+    session = create_session()
+    try:
+        return (
+            session.query(Release)
+            .filter(Release.package_id == package_name)
+            .order_by(Release.created_date.desc())
+            .first()
+        )
+    finally:
+        session.close()
