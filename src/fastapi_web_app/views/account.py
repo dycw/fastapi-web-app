@@ -34,7 +34,7 @@ async def register_p(
 ) -> Union[dict[str, str], RedirectResponse]:
     vm = RegisterViewModel(request)
     await vm.load()
-    if vm.error:
+    if vm.error or vm.name is None or vm.email is None or vm.password is None:
         return vm.to_dict()
     else:
         create_account(vm.name, vm.email, vm.password)
