@@ -12,5 +12,7 @@ router = APIRouter()
 
 @router.get("/project/{package_name}")
 @template()
-def details(package_name: str, request: Request) -> dict[str, Any]:
-    return DetailsViewModel(package_name, request).to_dict()
+async def details(package_name: str, request: Request) -> dict[str, Any]:
+    model = DetailsViewModel(package_name, request)
+    await model.load()
+    return model.to_dict()

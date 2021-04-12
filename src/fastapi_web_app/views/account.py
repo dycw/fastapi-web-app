@@ -29,8 +29,10 @@ async def index(request: Request) -> dict[str, str]:
 
 @router.get("/account/register")
 @template()
-def register(request: Request) -> dict[str, str]:  # type: ignore
-    return RegisterViewModel(request).to_dict()
+async def register(request: Request) -> dict[str, str]:  # type: ignore
+    model = RegisterViewModel(request)
+    await model.load()
+    return model.to_dict()
 
 
 @router.post("/account/register")
@@ -51,8 +53,10 @@ async def register(  # noqa: F811
 
 @router.get("/account/login")
 @template()
-def login(request: Request) -> dict[str, str]:  # type: ignore
-    return LoginViewModel(request).to_dict()
+async def login(request: Request) -> dict[str, str]:  # type: ignore
+    model = LoginViewModel(request)
+    await model.load()
+    return model.to_dict()
 
 
 @router.post("/account/login")
