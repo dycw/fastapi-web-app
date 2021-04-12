@@ -6,6 +6,7 @@ from starlette.requests import Request
 from starlette.responses import RedirectResponse
 from starlette.status import HTTP_302_FOUND
 
+from fastapi_web_app.infrastructure.cookie_auth import logout_user
 from fastapi_web_app.infrastructure.cookie_auth import set_auth
 from fastapi_web_app.services.users import create_account
 from fastapi_web_app.view_models.account import AccountViewModel
@@ -52,5 +53,7 @@ def login(request: Request) -> dict[str, str]:
 
 @router.get("/account/logout")
 @template()
-def logout() -> dict[str, str]:
-    return {}
+def logout() -> RedirectResponse:
+    response = RedirectResponse("/", status_code=HTTP_302_FOUND)
+    logout_user(response)
+    return response
