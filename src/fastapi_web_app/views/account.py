@@ -19,7 +19,7 @@ from fastapi_web_app.view_models.account import RegisterViewModel
 router = APIRouter()
 
 
-@router.get("/account")
+@router.get("/account", include_in_schema=False)
 @template()
 async def index(request: Request) -> dict[str, str]:
     model = AccountViewModel(request)
@@ -27,7 +27,7 @@ async def index(request: Request) -> dict[str, str]:
     return model.to_dict()
 
 
-@router.get("/account/register")
+@router.get("/account/register", include_in_schema=False)
 @template()
 async def register(request: Request) -> dict[str, str]:  # type: ignore
     model = RegisterViewModel(request)
@@ -35,7 +35,7 @@ async def register(request: Request) -> dict[str, str]:  # type: ignore
     return model.to_dict()
 
 
-@router.post("/account/register")
+@router.post("/account/register", include_in_schema=False)
 @template()
 async def register(  # noqa: F811
     request: Request,
@@ -51,7 +51,7 @@ async def register(  # noqa: F811
         return response
 
 
-@router.get("/account/login")
+@router.get("/account/login", include_in_schema=False)
 @template()
 async def login(request: Request) -> dict[str, str]:  # type: ignore
     model = LoginViewModel(request)
@@ -59,7 +59,7 @@ async def login(request: Request) -> dict[str, str]:  # type: ignore
     return model.to_dict()
 
 
-@router.post("/account/login")
+@router.post("/account/login", include_in_schema=False)
 @template()
 async def login(  # noqa: F811
     request: Request,
@@ -80,7 +80,7 @@ async def login(  # noqa: F811
             return response
 
 
-@router.get("/account/logout")
+@router.get("/account/logout", include_in_schema=False)
 def logout() -> RedirectResponse:
     response = RedirectResponse("/", status_code=HTTP_302_FOUND)
     logout_user(response)
