@@ -1,7 +1,5 @@
 from typing import Optional
-from typing import cast
 
-from sqlalchemy import Column
 from sqlalchemy.orm import joinedload
 
 from fastapi_web_app.data.db_session import create_session
@@ -31,7 +29,7 @@ def latest_packages(*, limit: int = 5) -> list[Package]:
         releases = (
             session.query(Release)
             .options(joinedload(Release.package))
-            .order_by(cast(Column, Release.created_date).desc())
+            .order_by(Release.created_date.desc())
             .limit(limit)
             .all()
         )
