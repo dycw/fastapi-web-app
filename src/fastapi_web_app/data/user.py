@@ -1,13 +1,24 @@
 import datetime as dt
-from typing import Optional
+
+from sqlalchemy import Column
+from sqlalchemy import DateTime
+from sqlalchemy import Integer
+from sqlalchemy import String
+
+from fastapi_web_app.data.modelbase import SqlAlchemyBase
 
 
-class User:
-    def __init__(self, name: str, email: str, hashed_password: str) -> None:
-        self.id = 1
-        self.name = name
-        self.email = email
-        self.hashed_password = hashed_password
-        self.created_date = None
-        self.profile_image_url = ""
-        self.last_login: Optional[dt.datetime] = None
+class User(SqlAlchemyBase):
+    __tablename__ = "users"
+
+    id: int = Column(Integer, primary_key=True, autoincrement=True)
+    name: str = Column(String)
+    email: str = Column(String, index=True, unique=True)
+    hash_password: str = Column(String)
+    created_date: dt.datetime = Column(
+        DateTime, default=dt.datetime.now, index=True
+    )
+    last_login: dt.datetime = Column(
+        DateTime, default=dt.datetime.now, index=True
+    )
+    profile_image_url: str = Column(String)

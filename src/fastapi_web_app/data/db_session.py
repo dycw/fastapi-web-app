@@ -13,13 +13,13 @@ from fastapi_web_app.data.modelbase import SqlAlchemyBase
 __factory: Optional[Callable[[], Session]] = None
 
 
-def global_init(db_file: Path) -> None:
+def global_init(db_path: Path) -> None:
     global __factory
 
     if __factory:
         return
 
-    db_file = str(db_file)
+    db_file = str(db_path)
     if not db_file or not db_file.strip():
         raise Exception("You must specify a db file.")
 
