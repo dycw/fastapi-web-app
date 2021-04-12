@@ -15,19 +15,21 @@ from fastapi_web_app.data.modelbase import SqlAlchemyBase
 class Release(SqlAlchemyBase):
     __tablename__ = "releases"
 
-    id: int = Column(Integer, primary_key=True, autoincrement=True)
-    major_ver: int = Column(BigInteger, index=True)
-    minor_ver: int = Column(BigInteger, index=True)
-    build_ver: int = Column(BigInteger, index=True)
+    id: Union[Column, int] = Column(
+        Integer, primary_key=True, autoincrement=True
+    )
+    major_ver: Union[Column, int] = Column(BigInteger, index=True)
+    minor_ver: Union[Column, int] = Column(BigInteger, index=True)
+    build_ver: Union[Column, int] = Column(BigInteger, index=True)
     created_date: Union[Column, dt.datetime] = Column(
         DateTime, default=dt.datetime.now, index=True
     )
-    comment: str = Column(String)
-    url: str = Column(String)
-    size: int = Column(BigInteger)
+    comment: Union[Column, str] = Column(String)
+    url: Union[Column, str] = Column(String)
+    size: Union[Column, int] = Column(BigInteger)
 
     # package relationship
-    package_id: str = Column(String, ForeignKey("packages.id"))
+    package_id: Union[Column, str] = Column(String, ForeignKey("packages.id"))
     package = relation("Package")
 
     @property
