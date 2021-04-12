@@ -1,11 +1,9 @@
-from pathlib import Path
-
 from fastapi import FastAPI
 from fastapi_chameleon import global_init
-from git import Repo
 from starlette.staticfiles import StaticFiles
 from uvicorn import run
 
+from fastapi_web_app.config import get_db_path
 from fastapi_web_app.data import db_session
 from fastapi_web_app.views import account
 from fastapi_web_app.views import home
@@ -27,9 +25,7 @@ def configure(*, dev_mode: bool) -> None:
 
 
 def configure_db(*, dev_mode: bool) -> None:  # noqa: U100
-    root = Path(Repo(".", search_parent_directories=True).working_tree_dir)
-    file = root.joinpath("db", "pypi.sqlite")
-    db_session.global_init(file)
+    db_session.global_init(get_db_path())
 
 
 def configure_routes() -> None:

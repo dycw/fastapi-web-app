@@ -35,12 +35,15 @@ chameleon = "^3.9"
 fastapi = "^0.63"
 gitpython = "^3.1"
 loguru = "^0.5"
+progressbar2 = "^3.53"
+python-dateutil = "^2.8.1"
 python-multipart = "^0.0"
 sqlalchemy = "^1.4"
 uvicorn = "^0.13"
 fastapi-chameleon = { git = "https://github.com/mikeckennedy/fastapi-chameleon.git", branch = "main" }
 
 [tool.poetry.dev-dependencies]
+jupyterlab = "^3.0"
 pre-commit = "^2.12"
 pytest = "^6.2"
 pytest-xdist = "^2.2"
