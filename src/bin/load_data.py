@@ -173,7 +173,7 @@ def load_package(data: dict, user_lookup: dict[str, User]) -> Any:  # noqa: U100
             return
 
         p.author = info.get("author")
-        p.author_email = info.get("author_email")
+        p.author_email = info.get("author_email")  # type: ignore
 
         releases = build_releases(p.id, data.get("releases", {}))
 
@@ -182,16 +182,16 @@ def load_package(data: dict, user_lookup: dict[str, User]) -> Any:  # noqa: U100
 
         maintainers = []
 
-        p.summary = info.get("summary")
-        p.description = info.get("description")
+        p.summary = info.get("summary")  # type: ignore
+        p.description = info.get("description")  # type: ignore
 
-        p.home_page = info.get("home_page")
-        p.docs_url = info.get("docs_url")
-        p.package_url = info.get("package_url")
+        p.home_page = info.get("home_page")  # type: ignore
+        p.docs_url = info.get("docs_url")  # type: ignore
+        p.package_url = info.get("package_url")  # type: ignore
 
-        p.author = info.get("author")
-        p.author_email = info.get("author_email")
-        p.license = detect_license(info.get("license"))
+        p.author = info.get("author")  # type: ignore
+        p.author_email = info.get("author_email")  # type: ignore
+        p.license = detect_license(info.get("license"))  # type: ignore
 
         session = create_session()
         session.add(p)
